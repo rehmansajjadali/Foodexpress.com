@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Express - Menu</title>
+<link id="icon" rel="icon" sizes="32*32" href="FoodExpress.jpg">
+<link rel="stylesheet" href="index.html">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f8f9fa;
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#2d3436;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    text-align: center;
+    align-items:center;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ff6b35;
+}
+
+.cart{
+    position:relative;
+    cursor:pointer;
+}
+
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:#ff6b35;
+    color:white;
+    font-size:12px;
+    padding:3px 6px;
+    border-radius:50%;
+}
+
+/* ===== SEARCH ===== */
+.search-container{
+    padding:20px;
+    text-align:center;
+}
+
+.search-container input{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    border-radius:8px;
+    border:2px solid #ddd;
+    outline:none;
+}
+
+.search-container input:focus{
+    border-color:#ff6b35;
+}
+
+/* ===== CATEGORY FILTER ===== */
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:10px 20px 20px;
+}
+
+.category-btn{
+    padding:8px 15px;
+    border:none;
+    border-radius:20px;
+    background:#eee;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.category-btn.active,
+.category-btn:hover{
+    background:#ff6b35;
+    color:white;
+}
+        /* Back Button Styles */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #2d3436;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background: #e8e8e8;
+            color: #ff6b35;
+            transform: translateX(-3px);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+/* ===== MENU GRID ===== */
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.menu-card{
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.menu-card:hover{
+    transform:translateY(-5px);
+}
+
+.menu-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.menu-content{
+    padding:15px;
+}
+
+.menu-title{
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.menu-price{
+    color:#ff6b35;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.add-btn{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(135deg,#ff6b35,#f7931e);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    opacity:0.9;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#2d3436;
+    color:white;
+    margin-top:30px;
+}
+
+@media(max-width:500px){
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+<body>
+    <header>
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Go Back
+    </a>
+    <div class="logo">Food <span>Express</span></div>
+    <div class="cart">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search food...">
+</div>
+
+<div class="categories">
+    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn" data-category="fast">Fast Food</button>
+    <button class="category-btn" data-category="pizza">Pizza</button>
+    <button class="category-btn" data-category="dessert">Desserts</button>
+    <button class="category-btn" data-category="drink">Drinks</button>
+</div>
+
+<div class="menu-grid" id="menuGrid">
+
+    <div class="menu-card" data-category="fast">
+        <img src="Zinger_burger.png">
+        <div class="menu-content">
+            <div class="menu-title">Zinger Burger</div>
+            <div class="menu-price">$5.99</div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-card" data-category="pizza">
+        <img src="cheese_pizza.png">
+        <div class="menu-content">
+            <div class="menu-title">Cheese Pizza</div>
+            <div class="menu-price">$8.99</div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-card" data-category="dessert">
+        <img src="chocolate-cake.png">
+        <div class="menu-content">
+            <div class="menu-title">Chocolate Cake</div>
+            <div class="menu-price">$4.50</div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-card" data-category="drink">
+        <img src="Fresh_orange.png">
+        <div class="menu-content">
+            <div class="menu-title">Fresh Orange Juice</div>
+            <div class="menu-price">$3.00</div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Food Express | All Rights Reserved
+</footer>
+
+<script>
+const categoryButtons = document.querySelectorAll(".menu-section");
+const menuCards = document.querySelectorAll(".menu-card");
+const searchInput = document.getElementById("searchInput");
+const cartCount = document.getElementById("cartCount");
+const addButtons = document.querySelectorAll(".add-btn");
+
+let cart = 0;
+
+/* Category Filter */
+categoryButtons.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        document.querySelector(".active").classList.remove("active");
+        btn.classList.add("active");
+
+        const category = btn.dataset.category;
+
+        menuCards.forEach(card=>{
+            if(category === "all" || card.dataset.category === category){
+                card.style.display="block";
+            }else{
+                card.style.display="none";
+            }
+        });
+    });
+});
+
+/* Search */
+searchInput.addEventListener("keyup",()=>{
+    const value = searchInput.value.toLowerCase();
+    menuCards.forEach(card=>{
+        const title = card.querySelector(".menu-title").textContent.toLowerCase();
+        card.style.display = title.includes(value) ? "block" : "none";
+    });
+});
+
+/* Add to Cart */
+addButtons.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        cart++;
+        cartCount.textContent = cart;
+    });
+});
+</script>
+
+</body>
+</html>

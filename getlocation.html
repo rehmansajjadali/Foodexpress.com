@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Directions</title>
+    <link id="icon" rel="icon" sizes="32*32" href="FoodExpress.jpg">
+    <link rel="stylesheet" href="index.html">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #ff6348; /* Tomato */
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #fff;
+            --shadow: 0 5px 10px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        #icon{
+            border-radius: 25px;
+        }
+        
+        .location-section {
+  padding: 15px;
+  text-align: center;
+}
+
+.location-section button {
+  padding: 10px 15px;
+  background: #ff6348;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#map {
+  width: 100%;
+  height: 350px;
+  margin-top: 20px;
+}
+h2{
+    text-align: center;
+}
+
+.direction-btn {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+        /* Back Button Styles */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #2d3436;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background: #e8e8e8;
+            color: #ff6b35;
+            transform: translateX(-3px);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+<body> 
+        <!-- Back Button -->
+        <a href="index.html" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Go Back
+        </a>
+    <section class="location-section">
+  <button onclick="getUserLocation()">📍 Find Nearby Restaurants</button>
+</section>
+
+<section id="restaurantContainer" class="grid"></section>
+
+<section>
+  <h2>Map & Directions</h2>
+  <div id="map"></div>
+</section>
+
+<!-- Google Maps Script (Replace YOUR_API_KEY) -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+<script src="app.js"></script>
+</body>
+</html>
