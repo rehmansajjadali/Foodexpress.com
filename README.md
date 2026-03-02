@@ -1,3 +1,3 @@
 # Foodexpress.com
 
-https://github.com/rehmansajjadali/Foodexpress.com.git
+https://rehmansajjadali.github.io/Foodexpress.com/
